@@ -1,0 +1,14 @@
+<table>
+  <thead><tr><th>objectType</th><th>What it is</th></tr></thead>
+  <tbody>
+    <tr><td><code>folder</code></td><td>a section; its page is its <code>index_html/</code> leaf</td></tr>
+    <tr><td><code>page</code></td><td>a page; its body is <code>contentBody.html</code></td></tr>
+    <tr><td><code>pageLcnt</code></td><td>a page whose body is built from an LCNT document by HeVeA</td></tr>
+    <tr><td><code>files</code></td><td>files placed in the site at <code>siteFolder</code></td></tr>
+    <tr><td><code>custom</code></td><td>site-specific (e.g. the Plone 3 sites' <code>lcntLists</code>)</td></tr>
+    <tr><td><code>link</code></td><td>a tab that leads out (<code>linkUrl</code>, opened in a new tab), e.g. to another <code>.here</code> site</td></tr>
+    <tr><td><code>app</code></td><td>the tree gives the tab, title and place; a fixed page at that path (<code>site/src/pages/&lt;path&gt;.astro</code>) renders it, e.g. a React application as an island</td></tr>
+  </tbody>
+</table>
+<p>The Plone 3 sites' slider nodes (<code>auxNode</code>, <code>auxLeaf</code>, <code>rawFiles</code>) are
+skipped; Reveal presentations replace them.</p>

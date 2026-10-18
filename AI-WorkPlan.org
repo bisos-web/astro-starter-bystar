@@ -1,0 +1,104 @@
+#+title: Work Plan
+#+DATE: <2026-06-10 Wed 13:54>
+#+AUTHOR: Mohsen BANAN
+#+OPTIONS: toc:4
+#+TAGS: me ai aiAndMe
+
+# Provenance (installed once by aiActivity.cs --- not regenerated):
+#   Date:      2026-10-18T00:37:44+00:00
+#   User:      bystar
+#   Templates: /bisos/apps/defaults/ai-templates
+#   Command:   /bisos/venv/py3/devbin/aiActivity.cs -i initiate --activity=astro-site
+
+####+BEGIN: b:ai:file/particulars
+* AI Working Context
+  Working Directory: /bisos/git/auth/bxRepos/bisos-web/astro-starter-bystar
+  File: /bisos/git/auth/bxRepos/bisos-web/astro-starter-bystar/AI-WorkPlan.org
+  Activity: astro-site
+  Companion Docs: AI-WORKFLOW.org, AI-Activity.org, AI-DevStatus.org, README.org
+####+END:
+
+This Work Plan file drives the AI collaborative development.
+Interactions are broken down into "Stages". Each Stage has a set
+of TODOs that I work with Claude to accomplish.
+
+Note to a fresh Claude: read this file together with AI-WORKFLOW.org,
+AI-Activity.org and AI-DevStatus.org to orient yourself. The =<<Context Confirmation>>=
+TODO below is the standard first step, or use =/bx-confirm0= as the automated equivalent.
+TODOs tagged =:ai:= are assigned to Claude. After completing a TODO, summarize results
+under =----- Results: ------= and mark it DONE.
+
+* Stage 0: Confirm AI's Understanding of This Repo's Context
+
+Goal: Confirm AI's understanding of the context and capture that in [[Context Confirmation]] TODO.
+
+
+* Stage 0 TODOs
+** +
+** LOOP [#A] <<Context Confirmation>> for AI (typically triggered by /bx-confirm0) :aiAndMe:
+SCHEDULED: <2026-06-09 Tue>
+Must be repeated each time a new Claude instance is started here.
+Based on the series of files starting from CLAUDE.md in this repo,
+describe succinctly what you have understood.
+Enumerate explicitly which files you have imported and which you have considered.
+Prompt the user to confirm that the desired/appropriate model (/model) is being used for this project.
+Since this is to be repeated, leave the todo tag as LOOP.
+** -
+
+* Stage 1: General Stylistic Characteristics
+
+<<Stage 1>>
+
+Goal: Provide a general Purpose and Consistent Style and Templates
+
+- If a page is a leaf (Such as Home) -- It should not have a left sidebar  guide
+- We don't need bread crums. Combination of top left side guides makes it clear as where we are.
+- Dfeault for left sidebar is too wide. It needs to be narrower. Ideally set to 15% of the width,
+  or dynamically selected to the length of longest item
+
+
+* Stage 1 TODOs
+** +
+** TODO [#A] <<1.1>> Accomplish [[Stage 1]] goals.
+SCHEDULED: <2026-10-18 Sun 00:48>
+:PROPERTIES:
+:ORIGIN: Mohsen
+:IMPORTANCE: Medium
+:REPO: this
+:BASE: this
+:FOUND: <2026-10-01 Thu 10:32>
+:END:
+The goals are subject to discussion.
+----- Results: ------
+- Agreed 2026-10-18: (1) a page whose top-level section has no visible sub-pages (Home, Building and
+  Serving, فارسی) has no left tree and is full width; a page deeper in a section with sub-pages keeps it
+  (to reach its siblings); a page's =layoutLeftPortlets= (none / all, as the Plone 3 trees set it)
+  overrides. (2) No breadcrumbs, removed entirely: the tabs and the left tree show where a page is.
+  (3) The left tree as narrow as its longest entry, at most 18% (=grid-template-columns:
+  fit-content(18%) 1fr=). platform.here follows the same model.
+- Starter: =site/src/layouts/TreeLayout.astro= (breadcrumbs removed, the left-tree rule),
+  =site/src/lib/contentTree.mjs= (reads =layoutLeftPortlets=), =site/src/styles/site.css= (the width rule,
+  =.columns.noLeft=, base table styles for page bodies); the tree's Parameters and Content Tree pages, the
+  README and the astro-site activity updated.
+- platform.here (=bro_rawBisos= =web/astro=): its sidebar menu became tabs (the top-level entries,
+  layers included) with a left tree only for Capabilities (groups and leaves); the starter's header,
+  column and footer styles; the small "up" links above page titles (breadcrumbs in effect) removed.
+- Verified: both sites rebuilt (8 and 23 pages); no page has breadcrumbs; the left tree only where the
+  rule says (Home, Box: none; The Content Tree pages, Capabilities pages: narrow); siteVerify 200s and
+  404s; headless Chrome screenshots.
+- Then (user, 2026-10-18): the Site Map back in the starter, generated from the tree
+  (=site/src/pages/sitemap.astro=: the navigation's pages, nested, in order), linked as a site action at
+  the header's inline end (as Plone 3 had it), full width. platform.here: its Sitemap tab became the same
+  header link; and the layers (Box, OS, BISOS, BISOS-Evolution), which had been top-level tabs, are now
+  leaves of the Platform Layers section, in its left tree (a historic logic problem, per the user).
+- Then (user, 2026-10-18): right-to-left tabs at the far right, for Persian and Arabic readers. The tab
+  bar is =dir="ltr"= with two groups (=justify-content: space-between=): the left-to-right sections at the
+  left, the right-to-left ones (=dir="rtl"=, in their own order) at the right. The bar no longer mirrors on
+  a Persian page; the page body still does. Checked on the English Home and the Persian page.
+** -
+
+
+# Local Variables:
+# eval: (setq-local toc-org-max-depth 4)
+# eval: (setq-local org-log-done 'time)
+# End:

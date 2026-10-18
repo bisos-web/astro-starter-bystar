@@ -1,0 +1,24 @@
+\section*{Nodes}
+
+\par Each directory of \texttt{content/tree/} is a node. Its parameters are one file each, named as in the
+ByStar Plone 3 ContentTree; a folder's own page is its \texttt{index\_html/} leaf. The site's navigation is
+the tree: the top-level folders are the tabs, and a section's subtree is the left navigation; a section
+that is a single page is shown full width.
+
+\section*{Bodies}
+
+\par A page's body is HTML. For a \texttt{pageLcnt} node it is built from LaTeX by HeVeA, as this page
+is: \texttt{webPageLcnt/bodyWebPage.tex} becomes the node's \texttt{contentBody.html} when the site is
+built. So one LaTeX source serves the web page, its PDF and its slides.
+
+\begin{itemize}
+\item A \textbf{folder} is a section, with a page of its own.
+\item A \textbf{page} carries its body as HTML.
+\item A \textbf{pageLcnt} page builds its body from an LCNT document.
+\item A \textbf{files} node places its files in the site, at its \texttt{siteFolder}.
+\end{itemize}
+
+\section*{Languages}
+
+\par \texttt{contentLang} is inherited down the tree. Persian (\begin{fa}فارسی\end{fa}), Arabic and Hebrew
+pages are right-to-left: the page, its navigation and its text mirror.

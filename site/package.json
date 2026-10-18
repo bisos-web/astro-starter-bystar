@@ -1,0 +1,17 @@
+{
+  "name": "astro-starter-bystar",
+  "private": true,
+  "description": "ByStar Astro starter: a static site from a content tree (the ByStar Plone 3 ContentTree model), RTL-ready",
+  "type": "module",
+  "version": "1.0.0",
+  "author": "Mohsen Banan <https://github.com/mohsenBanan>",
+  "repository": { "type": "git", "url": "https://github.com/bisos-web/astro-starter-bystar" },
+  "scripts": {
+    "build": "astro build",
+    "dev": "astro dev",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "7.3.8"
+  }
+}

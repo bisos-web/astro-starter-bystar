@@ -1,0 +1,9 @@
+<p>The site's directory keeps its capability, content and site apart:</p>
+<pre>astroProc.spcs   the site's process (bisos.webCap's astroProc seed)
+cbm/             the capability: CBS, assemble, nginx vhost, .here dns entry
+content/tree/    this tree;  content/bin/  site-specific content scripts
+site/            the Astro site, built into site/dist/</pre>
+<pre>./astroProc.spcs                          # the menu
+./astroProc.spcs -i contentTreeValidate content/tree
+./astroProc.spcs -i siteBuild             # pageLcnt bodies, files, content/bin, npm ci, astro build
+./cbm/astroStarter-assemble.cs -i fullUpdate   # build, dns entry, vhost: http://astroStarter.here</pre>

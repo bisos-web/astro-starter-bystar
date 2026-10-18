@@ -1,0 +1,9 @@
+site/node_modules/
+site/dist/
+site/.astro/
+# Placed by the files nodes of content/tree (astroProc contentBuild)
+site/public/
+# Written by content/bin/* (per host, per build); content/data/ itself is kept
+content/data/*
+!content/data/README.org
+__pycache__/

@@ -1,0 +1,112 @@
+#+title: astro-starter-bystar --- A Static Site From a Content Tree
+#+DATE: <2026-10-18 Sat>
+#+AUTHOR: Mohsen BANAN
+#+OPTIONS: toc:3
+
+* Overview
+
+The starting point for BISOS static sites. A site's pages come from a /content tree/ on the file system,
+=content/tree/=, in the model of the ByStar Plone 3 ContentTree; [[https://astro.build][Astro]] builds
+them into static HTML that nginx serves as =http://<name>.here=. Bodies are HTML, or LaTeX converted by
+HeVeA; right-to-left languages (Persian, Arabic, Hebrew) are supported throughout.
+
+This repository is itself such a site, =http://astroStarter.here=, whose tree documents the model. Copy
+it to start a new site. It succeeds =bisos-web/gatsby-starter-bystar-nestedSidebar= (BISOS moved from
+Gatsby to Astro on 2026-10-17).
+
+* The Common Structure
+
+#+begin_example
+astro-starter-bystar/
+  README.org
+  astroProc.spcs     the site's process; planted on bisos.webCap's astroProc seed
+  cbm/               the capability: CBS, assemble, nginx vhost, .here dns entry
+  content/tree/      the content tree: the site's pages (engine-neutral)
+  content/bin/       site-specific content scripts; each writes content/data/<x>.json
+  content/siteStyle/ optional: logo.html for the header
+  site/              the Astro site; built into site/dist/
+#+end_example
+
+| Part                           | Provided by                                                         |
+|--------------------------------+---------------------------------------------------------------------|
+| =astroProc.spcs=               | =bisos.webCap=: =astroProc-seed.cs=; =astroProc_csu= (contentBuild, |
+|                                | siteBuild, siteVerify, siteInfo); =contentTree_csu= (tree Cmnds)    |
+| =site/src/lib/contentTree.mjs= | reads the tree at build time (the rules of =contentTree_csu=)       |
+| =site/src/layouts/=            | the Plone-like layout: tabs, the left tree, RTL                     |
+| =site/src/pages/=              | =[...slug].astro=: one page per tree node; fixed pages win          |
+
+* The Content Tree
+
+A node is a directory; its parameters are one file each, named as in the Plone 3 ContentTree, so a Plone
+3 site's =ContentTree/= imports nearly unchanged (=contentTreePloneImport=). The model is documented on
+the site itself (=content/tree/model/=). The navigation: top-level folders are the tabs; a section with
+sub-pages has a left tree, as narrow as its longest entry (at most 18%); a section that is a single page
+is full width; there are no breadcrumbs. A Site Map (=/sitemap/=, from the tree) is linked among the
+header's site actions. The tab bar is the same on every page: left-to-right sections at the left,
+right-to-left ones (Persian, Arabic, Hebrew) at the far right.
+
+| =objectType=         | =folder= (a section; its page is =index_html/=), =page=, =pageLcnt= (body |
+|                      | from LaTeX by HeVeA), =files= (placed at =siteFolder=), =custom=,         |
+|                      | =app= (a tab whose page is a fixed page, e.g. a React island)             |
+|                      | =link= (a tab leading out, =linkUrl=)                                     |
+| =folderTitle=        | a folder's label in the tabs and the left tree                            |
+| =pageTitle=          | a page's heading; =pageDescription= its summary                           |
+| =pubState=           | =publish=: built; anything else: left out                                 |
+| =excludeFromNav=     | =true=: built, not in the navigation                                      |
+| =layoutLeftPortlets= | a page's left tree: =none=, =all=; else when its section has sub-pages    |
+| =contentBody.html=   | the body (else =content.html=, =contentPreface.html=)                     |
+| =nodesOrdered=       | a folder's children in navigation order, one per line                     |
+| =contentLang=        | the language, inherited; =fa=, =ar=, =he=, =ur= are right-to-left         |
+| at the root          | =defaultPage= (served at =/=), =siteTitle=, =siteTagline=                 |
+
+A =pageLcnt= node's =contentBody.html= is generated from =webPageLcnt/bodyWebPage.tex= but kept under
+git, so a site still builds on a host without HeVeA.
+
+* React Applications as Islands
+
+An =app= node (=objectType= =app=) gives a tab, its title and its place in the tree; a fixed page at that
+path (=site/src/pages/<path>.astro=) renders it in the tree's layout, typically a React application as an
+Astro island (=<App client:only="react" />=, with =@astrojs/react=). The first: webCliGui in
+=bisos-web/csPlayer-webUi=, whose README lists what such an integration needs (its imports, Tailwind's
+=@source=, image imports as =?url=, CSS that leaves the site's chrome alone). The site's chrome is styled
+by class so an island's global CSS (e.g. Bootstrap) cannot restyle it.
+
+* Starting a Site
+
+1. Copy this repository (a new repo, or a directory in a BXO).
+2. Register its port, =.here= address and dev port in =bisos.banna= (=tcpPorts.py=).
+3. In =astroProc.spcs=, set =fqdn= and the dev port name; in =cbm/=, rename =astroStarter= in the file
+   names and contents, and set the stable path of =site/dist/= in the vhost.
+4. Replace =content/tree/= with the site's tree, or import a Plone 3 ContentTree:
+   =./astroProc.spcs -i contentTreePloneImport <site>/ContentTree content/tree=.
+5. =cd site && npm install= once, to create =site/package-lock.json= (keep it under git).
+6. Build and serve: =./astroProc.spcs -i siteBuild=, then =./cbm/<name>-assemble.cs -i fullUpdate=; or
+   plant a CBM leaf pointing at =cbm/<name>-cbs.pcs= (the =astro-site-authorship= skill).
+
+* Usage
+
+#+begin_src bash
+./astroProc.spcs                                     # the menu
+./astroProc.spcs -i siteInfo                         # directories, fqdn, ports, Astro version
+./astroProc.spcs -i contentTreeValidate content/tree
+./astroProc.spcs -i siteBuild                        # pageLcnt bodies, files, content/bin, npm ci, build
+./astroProc.spcs -i siteVerify / /model/             # over HTTP: 200s, and a missing page's 404
+(cd site && npx astro dev --host 127.0.0.1 --port 25019)
+./cbm/astroStarter-assemble.cs -i fullUpdate         # build, /etc/hosts entry, nginx vhost
+#+end_src
+
+* Requirements
+
+Node 22.22 or newer and npm (the =reactPlus= capability); Astro 7.3.8 is pinned by
+=site/package-lock.json=. HeVeA (Debian =hevea=) and bxtex's HeVeA macros (=bxlcnt=) for =pageLcnt=
+pages. =bisos.webCap= (=astroProc=, =contentTree=). No React and no client-side JavaScript: the pages
+are rendered at build time; the small-screen navigation folds with =<details>=.
+
+* Sites Built From It
+
+- =platform.here= --- =bxObjects/bro_rawBisos/bro_rawBisosPlatform/web/astro=: data-driven pages from
+  =content/bin/= scripts (the platform's layers and capabilities) next to fixed pages.
+
+# Local Variables:
+# eval: (setq-local toc-org-max-depth 3)
+# End:
