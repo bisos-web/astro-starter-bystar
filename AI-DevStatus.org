@@ -26,19 +26,30 @@ Note to a fresh Claude: this file is intentionally sparse at project start.
 Fill in the sections below when asked to update, following the structure provided.
 
 * Current State
-  [To be filled in by Claude after first substantive interaction]
+  Not yet written up in full; this records only the change of 2026-10-21.
+  - Boxed (folder) tabs: =site/src/styles/site.css= gives each top tab its own box, so a label of
+    several words reads as one tab. Applied the same day to every site copied from this starter
+    (csPlayer-webUi, platform.here, libre-halaal.org.here). Uncommitted at the time of writing.
 
 * Architecture
   [Key components, file structure, entry points]
 
 * What Works
-  [Verified functionality]
+  - Boxed tabs (2026-10-21): =siteBuild= 9 pages; astroStarter.here 200 at =/=, 404 for a missing page;
+    the served CSS has the rule; a headless Chrome screenshot of the header, the RTL tab group (فارسی)
+    boxed as well.
 
 * What Is Untested
-  [Known gaps]
+  - Boxed tabs at phone width on this site (checked on another site built from the starter: they wrap
+    onto rows and stay boxed).
 
 * Key Design Decisions
-  [Non-obvious choices and their rationale]
+  - *Boxed tabs* (user, 2026-10-21), chosen from side-by-side mockups of five treatments (none, divider
+    lines, boxes, a separator character, underlines): only boxes made two-word labels unambiguous on
+    both a light and a dark tab bar. The rule: a variable =--tabBox: #c8d6df= (an unselected tab's box
+    on the =--tabs= bar); =.tabs= =padding-block-start: 0.4rem=; =.tabGroup= gap 0.3 rem; =.tabs a=
+    =white-space: nowrap=, =background: var(--tabBox)=, =border-radius: 6px 6px 0 0=. A brand layer
+    restyles the boxes by the same selectors.
 
 # Local Variables:
 # eval: (setq-local toc-org-max-depth 4)

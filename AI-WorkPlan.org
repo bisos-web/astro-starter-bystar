@@ -10,6 +10,9 @@
 #   Templates: /bisos/apps/defaults/ai-templates
 #   Command:   /bisos/venv/py3/devbin/aiActivity.cs -i initiate --activity=astro-site
 
+####+BEGIN: b:ai:workflow/driver
+####+END:
+
 ####+BEGIN: b:ai:file/particulars
 * AI Working Context
   Working Directory: /bisos/git/auth/bxRepos/bisos-web/astro-starter-bystar
