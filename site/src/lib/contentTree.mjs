@@ -12,6 +12,7 @@
 //   pubState        publish: built; anything else: left out
 //   excludeFromNav  true: built, but not in the navigation
 //   layoutLeftPortlets  (a page) none: no left tree; all: a left tree; absent: the automatic rule
+//   layoutBare      (a page) true: no footer, and no heading from the tree: the body brings its own (an access page)
 //   body            contentBody.html, else content.html, else contentPreface.html
 //   nodesOrdered    a folder's children in navigation order, one per line (the rest by name)
 //   contentLang     en | fa | fr ...; inherited; fa/ar/he/ur pages are right-to-left
@@ -48,6 +49,7 @@ function pageOf(dir) {
     title: param(dir, "pageTitle") || "",
     description: param(dir, "pageDescription") || "",
     leftNav: param(dir, "layoutLeftPortlets"), // none | all | undefined (as the Plone 3 trees set it)
+    bare: param(dir, "layoutBare") === "true",
     ...readBody(dir),
   }
 }

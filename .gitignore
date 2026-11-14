@@ -7,3 +7,7 @@ site/public/
 content/data/*
 !content/data/README.org
 __pycache__/
+# Landed by lcnt (the "localWeb" export) and the pages generated from it (astroSite.cs -i libraryGenerate)
+var/
+content/tree/lcnt/
+content/tree/library/index_html/

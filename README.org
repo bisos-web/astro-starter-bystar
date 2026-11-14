@@ -62,6 +62,15 @@ right-to-left ones (Persian, Arabic, Hebrew) at the far right.
 A =pageLcnt= node's =contentBody.html= is generated from =webPageLcnt/bodyWebPage.tex= but kept under
 git, so a site still builds on a host without HeVeA.
 
+* The LCNT Library (optional)
+
+The starter has the hooks to publish LCNT documents (pdf, and the html of an article): a =library= folder
+node (the tab; its =index_html= is generated), the page parameter =layoutBare= (a body rendered as given,
+no footer), and =.gitignore= lines for =var/=, =content/tree/lcnt/= and
+=content/tree/library/index_html/=. A document with an =Exports/localWeb= spec (bisos.lcnt) lands in =var/lcnt/=, and =astroSite.cs -i
+libraryGenerate= makes the pages; the vhost's =/lcnt/= locations come from =bisos.webCap=. Delete the
+=library= node to leave it out. See =/bisos/asc/web/astro/lcntLibrary/README.org=.
+
 * React Applications as Islands
 
 An =app= node (=objectType= =app=) gives a tab, its title and its place in the tree; a fixed page at that

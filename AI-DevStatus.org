@@ -31,6 +31,11 @@ Fill in the sections below when asked to update, following the structure provide
     several words reads as one tab. Applied the same day to every site copied from this starter
     (csPlayer-webUi, platform.here, libre-halaal.org.here). Uncommitted at the time of writing.
 
+  - *The LCNT Library (2026-11-14):* an optional Library tab fed by the lcnt =localWeb= export:
+    =content/tree/library/=, the layout and =contentTree.mjs= hooks (page parameter =layoutBare=), =.gitignore=
+    lines, the =/lcnt/= vhost locations in =cbm/astroStarter-wvd.pcs=. Works with three example documents on
+    this site. Contract: =/bisos/asc/web/astro/lcntLibrary/README.org=; README section "The LCNT Library".
+
 * Architecture
   [Key components, file structure, entry points]
 

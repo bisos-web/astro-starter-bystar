@@ -65,7 +65,8 @@ const rtlTabs = navChildren(root).filter((t) => t.dir === "rtl")
         )}
         <main class="content">
           {page.isApp && <slot />}
-          {!page.isApp && (
+          {!page.isApp && page.bare && <Fragment set:html={page.html} />}
+          {!page.isApp && !page.bare && (
             <>
               <h1>{page.title || node.title}</h1>
               {page.description && <p class="description">{page.description}</p>}
@@ -74,10 +75,12 @@ const rtlTabs = navChildren(root).filter((t) => t.dir === "rtl")
           )}
         </main>
       </div>
-      <footer class="siteFooter" lang="en" dir="ltr">
-        Built with Astro from <code>content/tree</code> (the ByStar Plone 3 ContentTree model);
-        <a href="https://github.com/bisos-web/astro-starter-bystar">astro-starter-bystar</a>.
-      </footer>
+      {page.bare ? null : (
+        <footer class="siteFooter" lang="en" dir="ltr">
+          Built with Astro from <code>content/tree</code> (the ByStar Plone 3 ContentTree model);
+          <a href="https://github.com/bisos-web/astro-starter-bystar">astro-starter-bystar</a>.
+        </footer>
+      )}
     </div>
   </body>
 </html>
