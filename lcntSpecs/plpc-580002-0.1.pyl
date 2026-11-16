@@ -1,0 +1,34 @@
+{
+    "bxo": "bxlcnt/bro_lcntBases-rawBisos",
+    "bxoCommit": "4f043d8141014b76bc0d12aeca6826cb65c0db4b",
+    "bxoKind": "bro",
+    "bxoPath": "lcnt/lgpc/rawBisos/permanent/examples/pres-basic/Release/0.1",
+    "docNumber": "PLPC-580002",
+    "exportSpec": "localWeb",
+    "exportedAt": "2026-11-16T03:36:51+00:00",
+    "lcntClass": "lgpc",
+    "lcntInfo": "/de/sys/lcnt/lgpc/rawBisos/permanent/examples/pres-basic/LCNT-INFO",
+    "lcntNu": "580002",
+    "meta": {
+        "lcntClass": "lgpc",
+        "pubCategory": "PLPC",
+        "docNumber": "PLPC-580002",
+        "title": "pres-basic",
+        "authors": ["ByStar LCNT Examples"],
+        "date": "May 15, 2026",
+        "version": "0.1",
+        "group": "examples",
+        "url": "http://rawbisos.net/PLPC/580002",
+    },
+    "relTag": "0.1",
+    "release": {
+        "pdfs": [
+            {"name": "c-580002-0.1-pres-basic-pres.pdf", "build": "pres-basic-pres"}
+        ],
+        "html": None,
+        "htmlEntry": None,
+        "bibs": [],
+    },
+    "releaseDir": "/de/sys/lcnt/lgpc/rawBisos/permanent/examples/pres-basic/Release/0.1",
+    "specVersion": 1,
+}

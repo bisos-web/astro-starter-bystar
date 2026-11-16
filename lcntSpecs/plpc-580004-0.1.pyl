@@ -1,0 +1,41 @@
+{
+    "bxo": "bxlcnt/bro_lcntBases-rawBisos",
+    "bxoCommit": "4f043d8141014b76bc0d12aeca6826cb65c0db4b",
+    "bxoKind": "bro",
+    "bxoPath": "lcnt/lgpc/rawBisos/permanent/examples/artPres-ltr-basic/Release/0.1",
+    "docNumber": "PLPC-580004",
+    "exportSpec": "localWeb",
+    "exportedAt": "2026-11-16T03:36:44+00:00",
+    "lcntClass": "lgpc",
+    "lcntInfo": "/de/sys/lcnt/lgpc/rawBisos/permanent/examples/artPres-ltr-basic/LCNT-INFO",
+    "lcntNu": "580004",
+    "meta": {
+        "lcntClass": "lgpc",
+        "pubCategory": "PLPC",
+        "docNumber": "PLPC-580004",
+        "title": "artPres-ltr-basic",
+        "authors": ["ByStar LCNT Examples"],
+        "date": "May 15, 2026",
+        "version": "0.1",
+        "group": "examples",
+        "url": "http://rawbisos.net/PLPC/580004",
+    },
+    "relTag": "0.1",
+    "release": {
+        "pdfs": [
+            {
+                "name": "c-580004-0.1-artPres-ltr-basic-art-8.5x11.pdf",
+                "build": "artPres-ltr-basic-art-8.5x11",
+            },
+            {
+                "name": "c-580004-0.1-artPres-ltr-basic-pres.pdf",
+                "build": "artPres-ltr-basic-pres",
+            },
+        ],
+        "html": "c-580004-artPres-ltr-basic-html-html",
+        "htmlEntry": "articleEnFa.html",
+        "bibs": [],
+    },
+    "releaseDir": "/de/sys/lcnt/lgpc/rawBisos/permanent/examples/artPres-ltr-basic/Release/0.1",
+    "specVersion": 1,
+}

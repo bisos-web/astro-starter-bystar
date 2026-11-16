@@ -67,9 +67,15 @@ git, so a site still builds on a host without HeVeA.
 The starter has the hooks to publish LCNT documents (pdf, and the html of an article): a =library= folder
 node (the tab; its =index_html= is generated), the page parameter =layoutBare= (a body rendered as given,
 no footer), and =.gitignore= lines for =var/=, =content/tree/lcnt/= and
-=content/tree/library/index_html/=. A document with an =Exports/localWeb= spec (bisos.lcnt) lands in =var/lcnt/=, and =astroSite.cs -i
-libraryGenerate= makes the pages; the vhost's =/lcnt/= locations come from =bisos.webCap=. Delete the
-=library= node to leave it out. See =/bisos/asc/web/astro/lcntLibrary/README.org=.
+=content/tree/library/index_html/=.
+
+The documents the site publishes are declared in =lcntSpecs/= (beside =content/=, under git): one =.pyl=
+per release, written by the export of a document with an =Exports/localWeb= spec (bisos.lcnt), which
+then rebuilds the site. Each points at the release in its BXO. =astroProc.spcs -i contentBuild= (and so
+=siteBuild=) lands the declared releases in =var/lcnt/= and makes the pages, so the Library is rebuilt
+from the repository alone, on any host where those BXOs are activated. The vhost's =/lcnt/= locations
+come from =bisos.webCap=. Delete the =library= node and =lcntSpecs/= to leave it out. See
+=/bisos/asc/web/astro/lcntLibrary/README.org=.
 
 * React Applications as Islands
 
